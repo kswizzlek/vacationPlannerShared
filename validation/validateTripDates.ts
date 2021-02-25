@@ -6,10 +6,10 @@ export const validateTripDates = {
             if (tripDate.startDate > td.startDate && tripDate.startDate < td.endDate){
                 return true;
             }
-            if(tripDates.endDate < td.endDate && tripDate.endDate > td.startDate) {
+            if(tripDate.endDate < td.endDate && tripDate.endDate > td.startDate) {
                 return true;
             }
-            return false;
         })
+        return false;
     }
 }
