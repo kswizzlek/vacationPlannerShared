@@ -7,5 +7,5 @@ export interface TripDate{
 
 export interface TripDates {
     tripUuid: string;
-    tripDates: TripDate[];
+    dates: TripDate[];
 }

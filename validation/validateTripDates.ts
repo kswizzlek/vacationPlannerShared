@@ -2,14 +2,16 @@ import { TripDate, TripDates } from "../models/tripDates";
 
 export const validateTripDates = {
     checkIfDateOverlaps: (tripDate: TripDate, tripDates: TripDates): boolean => {
-        tripDates.tripDates.forEach(td => {
-            if (tripDate.startDate > td.startDate && tripDate.startDate < td.endDate){
-                return true;
+        if(!tripDates.dates) return false;
+        let invalid = false;
+        tripDates.dates.forEach(td => {
+            if ((new Date(tripDate.startDate) > new Date(td.startDate)) && (new Date(tripDate.startDate) < new Date(td.endDate))){
+                invalid = true;
             }
-            if(tripDate.endDate < td.endDate && tripDate.endDate > td.startDate) {
-                return true;
+            if(new Date(tripDate.endDate) < new Date(td.endDate) && new Date(tripDate.endDate) > new Date(td.startDate)) {
+                invalid = true;
             }
         })
-        return false;
+        return invalid;
     }
 }
